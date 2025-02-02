@@ -57,3 +57,11 @@ jobs:
       - name: print ffbuild logs
         if: ${{ failure() }}
         run: '[[ -f ./src/ffmpeg/ffbuild/config.log ]] && tail -50 ./src/ffmpeg/ffbuild/config.log'
+
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v4.6.0
+        with:
+          name: "ffmpeg-kit.arr"
+          # A file, directory or wildcard pattern that describes what to upload
+          path: android/ffmpeg-kit-android-lib/build/outputs/aar/
+          
